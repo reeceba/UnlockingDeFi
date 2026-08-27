@@ -1,93 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#08080d" />
-  <meta name="description" content="UnlockingDeFi — Learn Solana with confidence, one level at a time." />
-  <title>UnlockingDeFi — Learn Solana</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#08080d"><meta name="description" content="UnlockingDeFi — learn Solana one level at a time."><title>UnlockingDeFi — Dashboard</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="app-shell">
-    <aside class="sidebar" id="sidebar">
-      <a class="brand" href="#top" aria-label="UnlockingDeFi home">
-        <span class="brand-mark">U</span>
-        <span>Unlocking<span>DeFi</span></span>
-      </a>
-
-      <nav class="nav" aria-label="Main navigation">
-        <a class="nav-item active" href="#dashboard"><span>⌂</span> Dashboard</a>
-        <a class="nav-item" href="#learn"><span>◈</span> Learn</a>
-        <a class="nav-item" href="#tools"><span>⌁</span> Tools</a>
-        <a class="nav-item" href="#mentor"><span>✦</span> AI Mentor</a>
-        <a class="nav-item" href="#achievements"><span>♢</span> Achievements</a>
-      </nav>
-
-      <div class="sidebar-bottom">
-        <div class="streak-card">
-          <div class="streak-icon">🔥</div>
-          <div><strong>12 day streak</strong><small>Keep it going!</small></div>
-        </div>
-        <button class="profile-mini" type="button"><span class="avatar">R</span><span><strong>Reece</strong><small>Level 1 Explorer</small></span><b>⋯</b></button>
-      </div>
-    </aside>
-
-    <main class="main" id="top">
-      <header class="topbar">
-        <button class="mobile-menu" id="menuButton" aria-label="Open menu">☰</button>
-        <div class="breadcrumb">Your journey <span>/</span> Dashboard</div>
-        <div class="top-actions"><button class="icon-button" aria-label="Notifications">♧</button><button class="avatar avatar-top" aria-label="Profile">R</button></div>
-      </header>
-
-      <section class="content" id="dashboard">
-        <div class="hero-row">
-          <div>
-            <p class="eyebrow">WELCOME BACK, EXPLORER</p>
-            <h1>Learn Solana with confidence.<br><span>One level at a time.</span></h1>
-            <p class="hero-copy">Build real Solana skills through short lessons, interactive challenges and zero-risk practice.</p>
-            <button class="primary-button" id="continueButton">Continue learning <span>→</span></button>
-          </div>
-          <div class="hero-orb" aria-hidden="true"><div class="orb-ring ring-one"></div><div class="orb-ring ring-two"></div><div class="orb-core">◎</div><div class="orb-label">SOLANA<br><small>JOURNEY</small></div></div>
-        </div>
-
-        <div class="stats-grid">
-          <div class="stat-card"><span class="stat-icon purple">✦</span><div><strong>125</strong><small>XP earned</small></div></div>
-          <div class="stat-card"><span class="stat-icon orange">🔥</span><div><strong>12</strong><small>Day streak</small></div></div>
-          <div class="stat-card"><span class="stat-icon blue">◈</span><div><strong>1 / 10</strong><small>Levels complete</small></div></div>
-          <div class="stat-card"><span class="stat-icon green">✓</span><div><strong>8%</strong><small>Journey progress</small></div></div>
-        </div>
-
-        <div class="section-heading" id="learn"><div><p class="eyebrow">YOUR JOURNEY</p><h2>Continue learning</h2></div><a href="#levels">View all levels →</a></div>
-
-        <section class="learning-card">
-          <div class="level-badge">01</div>
-          <div class="lesson-main"><div class="lesson-kicker">LEVEL 01 · EXPLORER</div><h3>What is Solana?</h3><p>Understand the foundation of the Solana ecosystem and why it matters.</p><div class="progress-track"><span style="width: 35%"></span></div><small>Lesson 2 of 6 · 35% complete</small></div>
-          <button class="play-button" id="lessonButton" aria-label="Start lesson">▶</button>
-        </section>
-
-        <div class="section-heading" id="levels"><div><p class="eyebrow">ROADMAP</p><h2>Your Solana journey</h2></div></div>
-        <div class="levels-grid">
-          <article class="level-card current"><div class="level-number">01</div><div><strong>Explorer</strong><p>Crypto & Solana basics</p></div><span class="status">IN PROGRESS</span></article>
-          <article class="level-card locked"><div class="level-number">02</div><div><strong>Wallet Keeper</strong><p>Wallets & security</p></div><span class="lock">⌁</span></article>
-          <article class="level-card locked"><div class="level-number">03</div><div><strong>SOL Starter</strong><p>Fees & transactions</p></div><span class="lock">⌁</span></article>
-          <article class="level-card locked"><div class="level-number">04</div><div><strong>Trader</strong><p>Swaps & DEXs</p></div><span class="lock">⌁</span></article>
-        </div>
-
-        <div class="lower-grid">
-          <section class="feature-card" id="tools"><div class="feature-icon">⌁</div><div><p class="eyebrow">PRACTICE</p><h3>Learn by doing.</h3><p>Experiment with Solana concepts safely before touching real funds.</p><button class="ghost-button">Explore tools →</button></div></section>
-          <section class="feature-card mentor" id="mentor"><div class="feature-icon">✦</div><div><p class="eyebrow">COMING SOON</p><h3>Your AI Mentor.</h3><p>Ask questions, get explanations and learn at your own pace.</p><button class="ghost-button">Meet your mentor →</button></div></section>
-        </div>
-
-        <footer><span>UnlockingDeFi</span><span>Learn · Practice · Unlock</span></footer>
-      </section>
-    </main>
-  </div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite">Demo interaction — the learning engine comes next.</div>
-  <script src="app.js"></script>
-</body>
-</html>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar"><a class="brand" href="#dashboard"><span class="brand-mark">U</span><span>Unlocking<span>DeFi</span></span></a><nav class="nav"><a class="nav-item active" href="#dashboard"><span>⌂</span>Dashboard</a><a class="nav-item" href="#learn"><span>◈</span>Learn</a><a class="nav-item" href="#tools"><span>⌁</span>Tools</a><a class="nav-item" href="#mentor"><span>✦</span>AI Mentor</a><a class="nav-item" href="#achievements"><span>♢</span>Achievements</a></nav><div class="sidebar-bottom"><div class="streak-card"><div class="streak-icon">🔥</div><div><strong>12 day streak</strong><small>Keep it going!</small></div></div><button class="profile-mini"><span class="avatar">R</span><span><strong>Reece</strong><small>Level 1 · Explorer</small></span><b>⋯</b></button></div></aside>
+<main class="main"><header class="topbar"><button class="mobile-menu" id="menuButton">☰</button><div class="breadcrumb">Your journey <span>/</span> Dashboard</div><div class="top-actions"><button class="icon-button">♧</button><button class="avatar avatar-top">R</button></div></header>
+<section class="content" id="dashboard">
+<div class="hero-row"><div><p class="eyebrow">WELCOME BACK, EXPLORER</p><h1>Learn Solana with confidence.<br><span>One level at a time.</span></h1><p class="hero-copy">Build real Solana skills through short lessons, interactive challenges and zero-risk practice.</p><button class="primary-button" id="continueButton">Continue learning <span>→</span></button></div><div class="hero-orb"><div class="orb-ring ring-one"></div><div class="orb-ring ring-two"></div><div class="orb-core">◎</div><div class="orb-label">SOLANA<br><small>JOURNEY</small></div></div></div>
+<div class="stats-grid"><div class="stat-card"><span class="stat-icon purple">✦</span><div><strong>125</strong><small>XP earned</small></div></div><div class="stat-card"><span class="stat-icon orange">🔥</span><div><strong>12</strong><small>Day streak</small></div></div><div class="stat-card"><span class="stat-icon blue">◈</span><div><strong>1 / 10</strong><small>Levels complete</small></div></div><div class="stat-card"><span class="stat-icon green">✓</span><div><strong>8%</strong><small>Journey progress</small></div></div></div>
+<div class="section-heading" id="learn"><div><p class="eyebrow">YOUR JOURNEY</p><h2>Continue learning</h2></div><a href="#levels">View all levels →</a></div>
+<section class="learning-card"><div class="level-badge">01</div><div class="lesson-main"><div class="lesson-kicker">LEVEL 01 · EXPLORER</div><h3>What is Solana?</h3><p>Understand the foundation of the Solana ecosystem and why it matters.</p><div class="progress-track"><span style="width:35%"></span></div><small>Lesson 2 of 6 · 35% complete</small></div><button class="play-button" id="lessonButton">▶</button></section>
+<div class="section-heading" id="levels"><div><p class="eyebrow">ROADMAP</p><h2>Your Solana journey</h2></div></div><div class="levels-grid"><article class="level-card current"><div class="level-number">01</div><div><strong>Explorer</strong><p>Crypto & Solana basics</p></div><span class="status">IN PROGRESS</span></article><article class="level-card locked"><div class="level-number">02</div><div><strong>Wallet Keeper</strong><p>Wallets & security</p></div><span class="lock">⌁</span></article><article class="level-card locked"><div class="level-number">03</div><div><strong>SOL Starter</strong><p>Fees & transactions</p></div><span class="lock">⌁</span></article><article class="level-card locked"><div class="level-number">04</div><div><strong>Trader</strong><p>Swaps & DEXs</p></div><span class="lock">⌁</span></article></div>
+<div class="lower-grid"><section class="feature-card" id="tools"><div class="feature-icon">⌁</div><div><p class="eyebrow">PRACTICE</p><h3>Learn by doing.</h3><p>Experiment with Solana concepts safely before touching real funds.</p><button class="ghost-button">Explore tools →</button></div></section><section class="feature-card mentor" id="mentor"><div class="feature-icon">✦</div><div><p class="eyebrow">COMING SOON</p><h3>Your AI Mentor.</h3><p>Ask questions, get explanations and learn at your own pace.</p><button class="ghost-button">Meet your mentor →</button></div></section></div>
+<section class="achievement-preview" id="achievements"><div><p class="eyebrow">NEXT MILESTONE</p><h3>Explorer badge</h3><p>Complete Level 01 to unlock your first achievement.</p></div><span>🏆</span></section><footer><span>UnlockingDeFi</span><span>Learn · Practice · Unlock</span></footer>
+</section></main></div><div class="toast" id="toast">Demo interaction — lesson engine comes next.</div><script src="app.js"></script>
+</body></html>
