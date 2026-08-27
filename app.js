@@ -1,33 +1,4 @@
-const sidebar = document.getElementById('sidebar');
-const menuButton = document.getElementById('menuButton');
-const toast = document.getElementById('toast');
-
-menuButton?.addEventListener('click', () => sidebar.classList.toggle('open'));
-
-document.querySelectorAll('.nav-item').forEach(item => {
-  item.addEventListener('click', () => {
-    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
-    item.classList.add('active');
-    sidebar.classList.remove('open');
-  });
-});
-
-function demoMessage(message) {
-  toast.textContent = message;
-  toast.classList.add('show');
-  window.clearTimeout(window.__toastTimer);
-  window.__toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
-}
-
-document.getElementById('continueButton')?.addEventListener('click', () => {
-  document.getElementById('learn')?.scrollIntoView({ behavior: 'smooth' });
-  demoMessage('Lesson 2 ready — interactive learning is next.');
-});
-
-document.getElementById('lessonButton')?.addEventListener('click', () => {
-  demoMessage('Lesson player coming next — the shell is live.');
-});
-
-document.querySelectorAll('.ghost-button').forEach(button => {
-  button.addEventListener('click', () => demoMessage('This module is part of the UnlockingDeFi roadmap.'));
-});
+const toast=document.getElementById('toast');
+function demoMessage(message){if(!toast)return;toast.textContent=message;toast.classList.add('show');clearTimeout(window.__toastTimer);window.__toastTimer=setTimeout(()=>toast.classList.remove('show'),2600)}
+document.querySelectorAll('.goal').forEach(goal=>goal.addEventListener('click',()=>{document.querySelectorAll('.goal').forEach(g=>g.classList.remove('selected'));goal.classList.add('selected')}));
+document.getElementById('profileForm')?.addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('name').value.trim()||'Explorer';const experience=document.getElementById('experience').value;const goal=document.querySelector('.goal.selected')?.dataset.goal||'Solana basics';localStorage.setItem('ud_profile',JSON.stringify({name,experience,goal}));demoMessage(`Profile ready, ${name}! ${goal} is your first focus.`);setTimeout(()=>demoMessage('Next: connect your profile to the learning dashboard.'),2800)});
