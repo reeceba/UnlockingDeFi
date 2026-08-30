@@ -1,6 +1,6 @@
 const SUPABASE_URL='https://dvpxlirjmyluwljivtdw.supabase.co';
 const SUPABASE_KEY='sb_publishable_E4GiDJ-pJ5n2a0WGBpHOdQ_upqwyiCA';
-const LIVE_URL='https://reeceba.github.io/UnlockingDeFi/';
+const LIVE_URL='https://unlocking-de-fi.vercel.app/';
 const supabaseClient=window.supabase?.createClient(SUPABASE_URL,SUPABASE_KEY);
 const toast=document.getElementById('toast'),authShell=document.getElementById('authShell'),setupShell=document.getElementById('setupShell'),dashboardShell=document.getElementById('dashboardShell'),authStatus=document.getElementById('authStatus'),resetModal=document.getElementById('resetModal');
 let authMode='signup';
