@@ -79,3 +79,6 @@ function openProfile(){
   $('profileClose').addEventListener('click',()=>modal.classList.add('hidden'));
   modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.add('hidden')},{once:true});
 }
+
+['dashAvatarTop','dashAvatar','savedName','dashboardCharacter'].forEach(id=>$(id)?.addEventListener('click',openProfile));
+document.querySelector('.saved-profile')?.addEventListener('click',openProfile);
