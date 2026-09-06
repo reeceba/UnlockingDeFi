@@ -15,6 +15,28 @@ async function signInWallet(){if(!wallet)return connectWallet();const button=$('
 function toBase58(bytes){const A='123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz';let n=0n;for(const b of bytes)n=n*256n+BigInt(b);let s='';while(n){const r=Number(n%58n);s=A[r]+s;n/=58n}for(const b of bytes){if(b===0)s='1'+s;else break}return s||'1'}
 $('walletButton')?.addEventListener('click',()=>($('walletButton').dataset.action==='sign'?signInWallet():connectWallet()));$('walletConnectSmall')?.addEventListener('click',connectWallet);
 function renderCharacter(style){const el=$('characterHead');if(el)el.dataset.style=style||'Explorer';document.querySelectorAll('.character-option').forEach(x=>x.classList.toggle('selected',x.dataset.style===(style||'Explorer')))}
+
+function geckoMarkup(level=1,style='Explorer',compact=false){
+  const stage=Math.max(1,Math.min(10,Number(level)||1));
+  const gear=stage>=5?' gecko-gear':''; const evolved=stage>=8?' gecko-evolved':'';
+  return `<div class="gecko-avatar${compact?' gecko-compact':''}${gear}${evolved}" data-style="${style}" data-level="${stage}">
+    <div class="gecko-aura"></div><div class="gecko-body"></div><div class="gecko-tail"></div>
+    <div class="gecko-head"><div class="gecko-helmet"><span></span></div><div class="gecko-snout"></div><div class="gecko-eye crystal"></div><div class="gecko-eye second"></div><div class="gecko-smile"></div></div>
+    <div class="gecko-stage">LV ${String(stage).padStart(2,'0')}</div>
+  </div>`;
+}
+function traitRoadmap(level){
+ const all=[
+  ['Explorer Spark','✦','Your journey begins','1'],
+  ['Wallet Keeper','🔐','Security awareness unlocked','2'],
+  ['Swap Scout','↗','Understand safer swaps','3'],
+  ['DeFi Compass','◈','Navigate protocols','5'],
+  ['Builder Core','⌘','Advanced ecosystem knowledge','8'],
+  ['Solana Sage','✦','Mastery evolution','10']
+ ];
+ return all.map(t=>`<div class="gecko-trait ${level>=+t[3]?'earned':'locked'}"><span>${t[1]}</span><div><b>${t[0]}</b><small>${level>=+t[3]?t[2]:'Unlocks at Level '+t[3]}</small></div></div>`).join('');
+}
+
 function levelName(level){return['Explorer','Wallet Keeper','Trader','Staker','DeFi Explorer','Protocol Scout','Builder','Solana Navigator','DeFi Master','Solana Sage'][Math.max(0,Math.min(9,(level||1)-1))]}
 function evolution(level){const l=Math.max(1,Math.min(10,level||1));return Math.round(((l-1)/9)*100)}
 async function loadTraits(){try{const{data}=await supabaseClient.from('traits').select('id,name,description,icon,rarity,required_level').order('required_level');return data||[]}catch{return[]}}
@@ -31,20 +53,29 @@ $('signOut')?.addEventListener('click',logout);$('dashboardSignOut')?.addEventLi
 
 function openProfile(){
   if(!profile)return;
+  const level=profile.current_level||1;
+  const xp=profile.xp||0;
   const completed=journeyState.progress.filter(x=>x.status==='completed').length;
   const started=journeyState.progress.filter(x=>x.status==='started').length;
+  const nextLevelXp=Math.ceil((xp+1)/500)*500;
+  const progress=Math.min(100,Math.round((xp%500)/5));
   let modal=$('profileModal');
   if(!modal){modal=document.createElement('div');modal.id='profileModal';modal.className='profile-modal';document.body.appendChild(modal)}
-  modal.innerHTML=`<div class="profile-dialog">
+  modal.innerHTML=`<div class="profile-dialog gecko-profile">
     <button class="lesson-close" id="profileClose">×</button>
-    <p class="eyebrow">YOUR WEB3 IDENTITY</p>
-    <div class="profile-hero"><div class="dashboard-character">${profile.character_style==='Builder'?'⌘':profile.character_style==='Trader'?'↗':profile.character_style==='Guardian'?'◆':'◎'}</div><div><h2>${profile.username||'Explorer'}</h2><p>Level ${profile.current_level||1} · ${levelName(profile.current_level||1)}</p></div></div>
-    <div class="profile-stat-grid"><div><b>${profile.xp||0}</b><small>Total XP</small></div><div><b>${completed}</b><small>Missions complete</small></div><div><b>${started}</b><small>In progress</small></div><div><b>${journeyState.traits.length}</b><small>Traits earned</small></div></div>
-    <div class="profile-wallet"><span>WALLET ACCOUNT</span><code>${wallet||''}</code></div>
-    <p class="profile-note">Your completed XP and mission progress are tied to this wallet. Active lesson checkpoints are saved automatically while you learn.</p>
+    <div class="gecko-profile-top"><div><p class="eyebrow">YOUR GECKO</p><h2>${profile.username||'Explorer'}</h2><p>Level ${String(level).padStart(2,'0')} · ${levelName(level)}</p></div><span class="profile-status">● WALLET VERIFIED</span></div>
+    <section class="gecko-showcase">
+      <div class="gecko-orbit orbit-one"></div><div class="gecko-orbit orbit-two"></div>
+      ${geckoMarkup(level,profile.character_style||'Explorer')}
+      <div class="gecko-caption"><b>${level>=8?'EVOLVED GECKO':level>=5?'GECKO ADVENTURER':'GECKO EXPLORER'}</b><small>Your appearance grows with your knowledge</small></div>
+    </section>
+    <section class="xp-panel"><div class="xp-head"><span>XP PROGRESS</span><b>${xp} XP</b></div><div class="xp-track"><span style="width:${progress}%"></span></div><small>${nextLevelXp-xp} XP until the next level</small></section>
+    <div class="profile-stat-grid"><div><b>${completed}</b><small>Missions complete</small></div><div><b>${started}</b><small>Active quests</small></div><div><b>${journeyState.traits.length||Math.max(1,Math.floor(level/2))}</b><small>Traits earned</small></div><div><b>${profile.streak||0}</b><small>Day streak</small></div></div>
+    <section class="gecko-traits-section"><div class="section-title"><span>EVOLUTION PATH</span><small>Traits unlock as you learn</small></div><div class="gecko-trait-list">${traitRoadmap(level)}</div></section>
+    <div class="profile-wallet"><span>WALLET IDENTITY</span><code>${wallet||''}</code></div>
+    <p class="profile-note">Your Gecko, XP, traits and mission progress are linked to this wallet. Disconnecting never resets your journey.</p>
   </div>`;
   modal.classList.remove('hidden');
   $('profileClose').addEventListener('click',()=>modal.classList.add('hidden'));
   modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.add('hidden')},{once:true});
 }
-['dashAvatarTop','dashAvatar','savedName','dashboardCharacter'].forEach(id=>$(id)?.addEventListener('click',openProfile));
