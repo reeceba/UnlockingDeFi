@@ -18,10 +18,9 @@ function renderCharacter(style){const el=$('characterHead');if(el)el.dataset.sty
 
 function geckoMarkup(level=1,style='Explorer',compact=false){
   const stage=Math.max(1,Math.min(10,Number(level)||1));
-  const gear=stage>=5?' gecko-gear':''; const evolved=stage>=8?' gecko-evolved':'';
-  return `<div class="gecko-avatar${compact?' gecko-compact':''}${gear}${evolved}" data-style="${style}" data-level="${stage}">
-    <div class="gecko-aura"></div><div class="gecko-body"></div><div class="gecko-tail"></div>
-    <div class="gecko-head"><div class="gecko-helmet"><span></span></div><div class="gecko-snout"></div><div class="gecko-eye crystal"></div><div class="gecko-eye second"></div><div class="gecko-smile"></div></div>
+  return `<div class="gecko-avatar${compact?' gecko-compact':''}" data-style="${style}" data-level="${stage}">
+    <div class="gecko-aura"></div>
+    <img class="gecko-real-image" src="/characters/file_00000000dc14820b8168f9389bb61258.png" alt="UnlockingDeFi Explorer Gecko">
     <div class="gecko-stage">LV ${String(stage).padStart(2,'0')}</div>
   </div>`;
 }
